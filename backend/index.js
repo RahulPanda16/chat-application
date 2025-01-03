@@ -40,10 +40,11 @@ io.on('connection', (socket) => {
 
     socket.on('chat_message', async (msg) =>{
       console.log('message: '+ msg);
-      console.log(socket.userId);
+      // console.log(socket.userId);
       socket.userId = msg;
-      console.log(socket.userId);
+      // console.log(socket.userId);
       activeUsers.add(msg);
+
       io.emit('chat_message', msg,[...activeUsers]);
 
       try{

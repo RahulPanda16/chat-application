@@ -6,9 +6,9 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->setDefaultController("Users");
+// $routes->setDefaultController("Users");
 
-$routes->get('/login', 'Users::login');
+$routes->get('/login', 'Users::index');
 $routes->match(['get','post'],'/signup', 'Users::register');
 
 $routes->get('/', 'Home::index');
