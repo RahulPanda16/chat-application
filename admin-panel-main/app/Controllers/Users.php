@@ -13,6 +13,7 @@ class Users extends BaseController
 
     public function index() { 
         $data = []; 
+
         if ($this->request->getMethod() == 'post') { 
             $rules = [ 
                 'email' => 'required|min_length[6]|max_length[50]|valid_email', 
@@ -23,18 +24,40 @@ class Users extends BaseController
                 'password' => [ 
                     'validateUser' => "Email or Password don't match",
                  ], 
-            ]; 
-                 if (!$this->validate($rules, $errors)) { 
-                    $data['validation'] = $this->validator; 
-                } else { 
-                    // user stored in database 
-                    $model = new LoginModel(); 
-                    // Add your logic here to handle the login
-                     } } 
-                     echo view('layout/header'); 
-                     echo view('login', $data); 
-                     echo view('layout/footer'); 
-                    }
+            ];
+                
+            if (!$this->validate($rules, $errors)) { 
+                $data['validation'] = $this->validator; 
+            } 
+            else { 
+                 // user stored in database 
+                 $model = new LoginModel(); 
+                 // Add your logic here to handle the login
+
+                $user = $model->where('email', $this->request->getVar('email'))
+                              ->first();
+
+                 $this->setUserSession($user);
+                 return redirect()->to('/chat');
+            } 
+        } 
+         echo view('layout/header'); 
+         echo view('login', $data); 
+         echo view('layout/footer'); 
+    }
+
+    private function setUserSession($user){
+       $data = [
+        'id' => $user['id'],
+        'firstname' => $user['firstname'],
+        'lastname' => $user['lastname'],
+        'email' => $user['email'],
+        'isLoggedIn' => true,
+       ];
+
+       session()->set($data);
+       return true;
+    }
 
 
     public function register(){
