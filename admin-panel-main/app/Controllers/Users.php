@@ -13,7 +13,9 @@ class Users extends BaseController
 
     public function index() { 
         $data = []; 
-        if ($this->request->getMethod() == 'post') { 
+
+        if (true) { 
+            // $this->request->getMethod() == 'post'
             $rules = [ 
                 'email' => 'required|min_length[6]|max_length[50]|valid_email', 
                 'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]', 
@@ -24,28 +26,53 @@ class Users extends BaseController
                     'validateUser' => "Email or Password don't match",
                  ], 
             ]; 
-                 if (!$this->validate($rules, $errors)) { 
-                    $data['validation'] = $this->validator; 
-                } else { 
+                 
+            if (!$this->validate($rules, $errors)) { 
+                $data['validation'] = $this->validator; 
+            }
+            else 
+            { 
                     // user stored in database 
                     $model = new LoginModel(); 
                     // Add your logic here to handle the login
-                     } } 
-                     echo view('layout/header'); 
-                     echo view('login', $data); 
-                     echo view('layout/footer'); 
-                    }
+                    $user = $model->where('email', $this->request->getVar('email'))
+                                  ->first();
+
+                    $this->setUserSession($user);
+                    return redirect()->to('/chat');
+            } 
+        } 
+            echo view('layout/header'); 
+            echo view('login', $data); 
+            echo view('layout/footer'); 
+    }
+
+
+    private function setUserSession($user){
+        $data = [
+         'id' => $user['id'],
+         'firstname' => $user['firstname'],
+         'lastname' => $user['lastname'],
+         'email' => $user['email'],
+         'isLoggedIn' => true,
+        ];
+    
+        session()->set($data);
+        return true;
+     }
 
 
     public function register(){
         $data = [];
 
-        if($this->request->getMethod() == 'post'){
+        if(true){
+            // $this->request->getMethod() == 'post'
             //do validation
+            
             $rules = [
                 'firstname' => 'required|min_length[3]|max_length[20]',
                 'lastname' => 'required|min_length[3]|max_length[20]',
-                'email' => 'required|min_length[6]|max_length[30]|valid_email|is_unique[singin.email]',
+                'email' => 'required|min_length[6]|max_length[30]|valid_email|is_unique[signin.email]',
                 'password' => 'required|min_length[8]|max_length[255]',
                 'password_confirm' => 'matches[password]'
             ];
@@ -72,5 +99,10 @@ class Users extends BaseController
         echo view('layout/header');
         echo view('signup', $data);
         echo view('layout/footer');
+    }
+
+    public function logout(){
+        session()->destroy();
+        return redirect()->to("/login");
     }
 }

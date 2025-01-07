@@ -72,6 +72,8 @@
             </div>
           </div>
         </li>
+
+
         
         <!-- <li class="clearfix">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg" alt="avatar" />
@@ -132,7 +134,7 @@
             </div>
           </div>
         </li>
-        
+        <a href="/logout" class="logout">Logout</a>
       </ul>
     </div>
     
@@ -226,6 +228,8 @@
       input.value=''; 
     }
   })
+
+  <?= $firstname = session()->get("firstname") ?>
 
   socket.on('chat_message', (msg) =>{
     // console.log(msg);

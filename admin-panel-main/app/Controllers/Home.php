@@ -456,6 +456,10 @@ class Home extends BaseController
     }
 
     public function chat(){
+        if(!session()->get('isLoggedIn')){
+            redirect()->to('/login');
+            return;
+        }
         echo view('chat');
     }
 }

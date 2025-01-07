@@ -9,7 +9,10 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->setDefaultController("Users");
 
 $routes->get('/login', 'Users::index');
+$routes->post('/login', 'Users::index');
 $routes->match(['get','post'],'/signup', 'Users::register');
+$routes->post('/signup2', 'Users::register');
+$routes->get('/logout', 'Users::logout');
 
 $routes->get('/', 'Home::index');
 $routes->get('/chat', 'Home::chat');
