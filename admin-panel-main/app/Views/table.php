@@ -16,49 +16,6 @@ $(document).ready(function() {
         });
     });
 
-    // $('#filter').click(function(event) { 
-    //     event.preventDefault(); 
-    //     var role = $('#roleFilter').val(); 
-    //     $.ajax({ 
-    //         url: "<?php echo base_url(); ?>/filterUsers", 
-    //         method: "GET", 
-    //         data: { role: role }, 
-    //         success: function(response) { 
-                
-    //             $('.table-responsive').html(response); 
-    //             relModalClose(); 
-    //         }, error: function(xhr, status, error) { 
-    //             console.error(xhr.responseText); 
-    //         } 
-    //     }); 
-    // }); 
-    // function relModalClose() { 
-    //     $('[rel="modal:close"]').trigger('click');
-    // }
-
-    // $('#filterForm').submit(function(event) { 
-    //     event.preventDefault(); 
-    //     var role = $('#roleFilter').val(); 
-    //     var search = $('#searchFilter').val(); 
-    //     console.log(role, search);
-    //     $.ajax({ 
-    //         url: "<?php echo base_url(); ?>/filterUsers", 
-    //         method: "GET", 
-    //         data: { role: role, search: search }, 
-    //         success: function(response) { 
-    //             $('.table-responsive').html(response); 
-    //             relModalClose(); 
-    //         }, 
-    //         error: function(xhr, status, error) { 
-    //             console.error(xhr.responseText); 
-    //         } 
-    //     }); 
-    // }); 
-
-    // function relModalClose() { 
-    //     $('[rel="modal:close"]').trigger('click'); 
-    // }
-
     $(document).on('click', '.delete', function() {
         var id = $(this).closest('tr').find('td.text-center.text-muted').text().replace('#', '').trim();
         $('#confirmYes').data('id', id);
@@ -179,30 +136,6 @@ document.getElementById('closeFilter').addEventListener('click', function() {
         <button type="button" class="btn btn-primary" id="confirmYes">OK</button>
     </div>
 </div>
-
-<!-- <div id="filter1" class="modal">
-    <form id="filterForm">
-        <div class="modal-header" style="background-color: #FFD700;">                      
-            <h4 class="modal-title">Filter Users</h4>
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <label>Role</label>
-                <select class="custom-select" name="role" id="roleFilter">
-                    <option value="">All Roles</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Supervisor</option>
-                    <option value="3">Team Lead</option>
-                    <option value="4">Agent</option>
-                </select>
-            </div>              
-        </div>
-        <div class="modal-footer">
-            <a href="#" class="btn btn-secondary" rel="modal:close">Close</a>
-            <input type="submit" class="btn btn-info" name="filter" value="Filter">
-        </div>
-    </form>
-</div> -->
 
 <div id="filter1" class="modal">
     <form id="filterForm" action="<?php echo base_url(); ?>" method="get">

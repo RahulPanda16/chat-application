@@ -35,3 +35,5 @@ $routes->post('/addRole','Home::addRole');
 $routes->get('/getSingleRole/(:num)','Home::getSingleRole/$1');
 $routes->post('/updateRole','Home::updateRole');
 $routes->post('/deleteRole','Home::deleteRole');
+
+$routes->get('/reports', 'Report::showReport');
