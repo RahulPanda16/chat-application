@@ -14,9 +14,9 @@ $routes->match(['get','post'],'/signup', 'Users::register');
 $routes->post('/signup2', 'Users::register');
 $routes->get('/logout', 'Users::logout');
 
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::home');
 $routes->get('/chat', 'Home::chat');
-$routes->get('/users', 'Home::table');
+$routes->get('/users', 'Home::index');
 $routes->get('/access', 'Home::access');
 $routes->match(['get','post'],'/campaign', 'Home::campaign');
 // $routes->get('/access', 'Home::access');
@@ -36,4 +36,7 @@ $routes->get('/getSingleRole/(:num)','Home::getSingleRole/$1');
 $routes->post('/updateRole','Home::updateRole');
 $routes->post('/deleteRole','Home::deleteRole');
 
-$routes->get('/reports', 'Report::showReport');
+$routes->get('/summaryReports/(:num)', 'Report::showSummaryReport/$1');
+$routes->get('/loggerReports/(:num)', 'Report::showLoggerReport/$1');
+$routes->match(['GET','POST'],'/getsummaryreport/(:num)', 'Report::summaryReport/$1');
+$routes->match(['GET','POST'],'/getloggerreport/(:num)', 'Report::downloadCsv/$1');

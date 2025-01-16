@@ -4,8 +4,7 @@
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
                                     <div class="page-title-icon">
-                                        <i class="pe-7s-car icon-gradient bg-mean-fruit">
-                                        </i>
+                                    <i class="ri-dashboard-2-line" style="padding-bottom:10px"></i>
                                     </div>
                                     <div>Analytics Dashboard
                                         <div class="page-title-subheading">

@@ -137,7 +137,7 @@
                                 <li class="app-sidebar__heading">Dashboards</li>
                                 <li>
                                     <a href="/users" class="mm-active">
-                                        <i class="metismenu-icon pe-7s-rocket"></i>
+                                        <i class="metismenu-icon"></i>
                                         Agent Dashboard
                                     </a>
                                 </li>
@@ -153,62 +153,62 @@
                                 </li>
                                 <li class="app-sidebar__heading">Operations</li>
                                 <li>
-                                    <a href="/">
-                                        <i class="metismenu-icon"></i>Users
+                                    <a href="<?= base_url('/users') ?>">
+                                        <i class="ri-group-line" style="margin-right:8px"></i>Users
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/campaign">
-                                        <i class="metismenu-icon"></i> Campaign
+                                    <a href="<?= base_url('/campaign') ?>">
+                                        <i class="ri-calendar-event-line" style="margin-right:6px"></i> Campaign
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/chat">
-                                        <i class="metismenu-icon"></i> Chat
+                                    <a href="<?= base_url('/chat') ?>">
+                                    <i class="ri-chat-ai-line" style="margin-right:6px" ></i> Chat
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/access">
-                                        <i class="metismenu-icon"></i> Access Levels
+                                    <a href="<?= base_url('/access') ?>">
+                                    <i class="ri-government-line" style="margin-right:6px"></i> Access Levels
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">Reports</li>
                                 <li>
-                                    <a href="dashboard-boxes.html">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                        Agent Report
+                                    <a href="<?= base_url("/summaryReports/1")?>">
+                                        <i class="ri-file-chart-line"  style="margin-right:6px"></i>
+                                        Summarize Report
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="forms-controls.html">
-                                        <i class="metismenu-icon pe-7s-mouse">
-                                        </i>Team Lead Report
+                                    <a href="<?= base_url("/loggerReports/1")?>">
+                                    <i class="ri-file-chart-2-line" style="margin-right:6px" ></i>
+                                        </i>Logger Report
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="forms-controls.html">
                                         <i class="metismenu-icon pe-7s-mouse">
                                         </i>Supervisor Reports
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="app-sidebar__heading">Contact</li>
                                 <li>
                                     <a href="forms-controls.html">
-                                        <i class="metismenu-icon pe-7s-mouse">
+                                        <i class="metismenu-icon">
                                         </i>Forms Validation
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">Conversations</li>
                                 <li>
                                     <a href="charts-chartjs.html">
-                                        <i class="metismenu-icon pe-7s-graph2">
+                                        <i class="metismenu-icon ">
                                         </i>Sms
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">Advanced Settings</li>
                                 <li>
                                     <a href="#">
-                                        <i class="metismenu-icon pe-7s-graph2">
+                                        <i class="metismenu-icon">
                                         </i>
                                         SMS
                                     </a>
@@ -230,14 +230,14 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="metismenu-icon pe-7s-graph2">
+                                        <i class="metismenu-icon">
                                         </i>Email
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">Live Monitoring</li>
                                 <li>
                                     <a href="#">
-                                        <i class="metismenu-icon pe-7s-graph2">
+                                        <i class="metismenu-icon">
                                         </i>
                                         Call Recordings
                                     </a>
