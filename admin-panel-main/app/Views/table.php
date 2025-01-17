@@ -164,9 +164,7 @@ document.getElementById('closeFilter').addEventListener('click', function() {
         </div>
     </form>
 </div>
-
-
-              
+             
 <!-- Link to open the modal -->
 <div class="row">
     <div class="col-md-12">

@@ -105,7 +105,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <?php }?>
         </tbody>
     </table>
-    <div class="d-block text-center card-footer">
+
+<div class="d-block text-center card-footer">
         <?php if($reportNumber == 1){?>
             <a style="background-color:rgb(98, 207, 156)" class="text-center btn" href="<?php echo base_url('/getLoggerReport/1')?>" rel="modal:open">Download Logger Report <i class="ri-chat-search-line"></i></a>
         <?php } else if($reportNumber == 2){?>
@@ -113,7 +114,73 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <?php } else {?>
             <a style="background-color:rgb(98, 207, 156)" class="text-center btn" href="<?php echo base_url('/getLoggerReport/3')?>" rel="modal:open">Download Logger Report <i class="ri-chat-search-line"></i></a>
         <?php }?>
+
+        <a style="background-color:rgb(175, 255, 218)" class="text-center btn" href="#filterReport" rel="modal:open">Filter <i class="ri-chat-search-line"></i></a>
     </div>
     <div class="pager"><?= $pagedata['pager'] ?></div>
 </div>
+
+<div id="filterReport" class="modal">
+    <?php if($reportNumber == 1) {?>
+        <form id="filterForm" action="<?php echo base_url("/loggerReports/1"); ?>" method="get">
+    <?php } else if($reportNumber == 2) {?>
+        <form id="filterForm" action="<?php echo base_url("/loggerReports/2"); ?>" method="get">
+    <?php }else{?>
+        <form id="filterForm" action="<?php echo base_url("/loggerReports/3"); ?>" method="get">
+    <?php }?>
+        <div class="modal-header" style="background-color:rgb(255, 235, 123);">                      
+            <h4 class="modal-title">Filter Users</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Report Type</label>
+                <select class="custom-select" name="report" id="reportFilter">
+                    <option value="default" disabled>Select Report Type</option>
+                    <option value="disposed" <?= ($user->reportType == 'disposed') ? 'selected' : '' ?>>Dispose</option>
+                    <option value="missed" <?= ($user->reportType == 'missed') ? 'selected' : '' ?>>Missed</option>
+                    <option value="autoDrop" <?= ($user->reportType == 'autoDrop') ? 'selected' : '' ?>>Auto Drop</option>
+                    <option value="autoFail" <?= ($user->reportType == 'autoFail') ? 'selected' : '' ?>>Auto Fail</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Dispose Type</label>
+                <select class="custom-select" name="dispose" id="disposeFilter">
+                    <option value="" disabled>Select Dispose Type</option>
+                    <option value="callback" <?= ($user->disposeType == 'callback') ? 'selected' : '' ?>>Call Back</option>
+                    <option value="dnc" <?= ($user->disposeType == 'dnc') ? 'selected' : '' ?>>Dnc</option>
+                    <option value="etx" <?= ($user->disposeType == 'etx') ? 'selected' : '' ?>>Etx</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Search</label>
+                <input type="text" class="form-control" name="search" id="searchFilter" placeholder="Search by Campaign Name or Agent Name or Process Name">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-secondary " id="closeFilter" rel="modal:close">Close</a>
+            <input type="submit" class="btn btn-info filter" name="filter" value="Filter">
+            <input type="button" class="btn btn-danger reset" value="Reset" onclick="resetFilters()">
+        </div>
+    </form>
+</div>
+
+<script> 
+function resetFilters() { 
+    document.getElementById('reportFilter').value = "default"; 
+    document.getElementById('disposeFilter').value = ""; 
+    document.getElementById('searchFilter').value = ''; 
+    document.getElementById('filterForm').submit(); 
+    } 
+</script>
+
+
+
+
+
+
+
+
+   
+
+
 

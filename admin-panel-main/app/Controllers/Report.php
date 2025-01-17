@@ -6,6 +6,10 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Report extends BaseController
 {   
+    public function __construct(){
+        helper(['form']);
+    }
+
     public function showSummaryReport($reportNo){ 
         if($reportNo == 1){
             $apiUrl = 'http://192.168.0.152:1000/sql/getsummarizereport';
@@ -56,6 +60,10 @@ class Report extends BaseController
             $apiUrl = 'http://192.168.0.152:1000/elastic/getallreport';
         }
 
+        $search = $this->request->getVar('search');
+        $report = $this->request->getVar('report');
+        $dispose = $this->request->getVar('dispose');
+
         $curl = curl_init($apiUrl); 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
         $response = curl_exec($curl); 
@@ -71,6 +79,23 @@ class Report extends BaseController
             if (json_last_error() !== JSON_ERROR_NONE) { 
                 return;
              } 
+
+             if ($search) { 
+                $userData = array_filter($userData, function($item) use ($search) { 
+                    return stripos($item->campaignName, $search) !== false || stripos($item->processName, $search) !== false || stripos($item->agentName, $search) !== false; });
+            }
+
+            if($report) {
+                $userData = array_filter($userData, function($item) use ($report) {
+                    return stripos($item->reportType, $report) !== false;
+                });
+            }
+
+            if($dispose) {
+                $userData = array_filter($userData, function($item) use ($dispose) {
+                    return stripos($item->disposeType, $dispose) !== false;
+                });
+            }
              
              $pager = \Config\Services::pager(); 
              $page = $this->request->getVar('page') ? (int)$this->request->getVar('page') : 1; 
@@ -95,7 +120,7 @@ class Report extends BaseController
         }elseif($reportNo == 2){
             $apiUrl = 'http://192.168.0.152:1000/mongo/getsummarizereport'; 
         }else{
-            $apiUrl = "http://192.168.0.152:1000//elastic/callreportsummary/get";
+            $apiUrl = "http://192.168.0.152:1000/elastic/callreportsummary/get";
         }
         $curl = curl_init($apiUrl); 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
@@ -160,7 +185,7 @@ class Report extends BaseController
             } 
         }else {
             $activeWorksheet->setCellValue('A1', 'Total_Calls'); 
-            $activeWorksheet->setCellValue('B1', 'Call_Hour'); 
+            // $activeWorksheet->setCellValue('B1', 'Call_Hour'); 
             // $activeWorksheet->setCellValue('C1', 'DateTime'); 
             $activeWorksheet->setCellValue('C1', 'Call_Answered'); 
             $activeWorksheet->setCellValue('D1', 'Missed_Calls'); 
@@ -170,7 +195,7 @@ class Report extends BaseController
             $num = 2; 
             foreach ($summaryData as $data) { 
                 $activeWorksheet->setCellValue('A' . $num, $data['Total_Calls']); 
-                $activeWorksheet->setCellValue('B' . $num, $data['_id'] . '-' . ($data['_id'] + 1)); 
+                // $activeWorksheet->setCellValue('B' . $num, $data['_id'] . '-' . ($data['_id'] + 1)); 
                 // $activeWorksheet->setCellValue('C' . $num, $data['datetime']); 
                 $activeWorksheet->setCellValue('C' . $num, $data['Call_Answered']); 
                 $activeWorksheet->setCellValue('D' . $num, $data['Missed_Calls']); 
@@ -188,7 +213,7 @@ class Report extends BaseController
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); 
         if($reportNo == 1){
             header('Content-Disposition: attachment;filename="SqlSummaryReport.xlsx"'); 
-        }else if($reportNo){
+        }else if($reportNo == 2){
             header('Content-Disposition: attachment;filename="MongoSummaryReport.xlsx"'); 
         }else {
             header('Content-Disposition: attachment;filename="ElasticSummaryReport.xlsx"'); 
@@ -365,9 +390,9 @@ class Report extends BaseController
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); 
         if($reportNo == 1){
             header('Content-Disposition: attachment;filename="SqlSummaryReport.xlsx"'); 
-        }else if($reportNo){
+        }else if($reportNo == 2){
             header('Content-Disposition: attachment;filename="MongoSummaryReport.xlsx"'); 
-        }else {
+        } else if ($reportNo == 3){
             header('Content-Disposition: attachment;filename="ElasticSummaryReport.xlsx"'); 
         }
         header('Cache-Control: max-age=0'); 
