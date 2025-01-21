@@ -449,6 +449,9 @@ class Home extends BaseController
     }
 
     public function table(){
+        if(!session()->get('isLoggedIn')){
+            return redirect()->to('/login');
+        }
         echo view('/layout/header');
         echo view('/layout/template');
         echo view('home');

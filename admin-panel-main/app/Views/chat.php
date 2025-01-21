@@ -63,7 +63,7 @@
           </div>
         </li>
         
-        <li class="clearfix">
+        <!-- <li class="clearfix">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg" alt="avatar" />
           <div class="about">
             <div class="name">Erica Hughes</div>
@@ -71,7 +71,7 @@
               <i class="fa fa-circle online"></i> online
             </div>
           </div>
-        </li>
+        </li> -->
 
 
         
@@ -125,7 +125,7 @@
           </div>
         </li> -->
         
-        <li class="clearfix">
+        <!-- <li class="clearfix">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg" alt="avatar" />
           <div class="about">
             <div class="name">Peyton Mckinney</div>
@@ -133,7 +133,7 @@
               <i class="fa fa-circle online"></i> online
             </div>
           </div>
-        </li>
+        </li> -->
         <a href="/logout" class="logout">Logout</a>
       </ul>
     </div>
@@ -215,7 +215,7 @@
   <!-- <script src="/assets/js/chat.js"></script> -->
   <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
 <script>
-  const socket = io("http://localhost:3000");
+  const socket = io("http://localhost:5001");
   
   const form = document.getElementById('form');
   const input = document.getElementById('input');

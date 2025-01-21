@@ -20,6 +20,7 @@
     <link href="<?= base_url('assets/css/jqueryTheme.css'); ?>" rel="stylesheet"> 
     <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  -->
     <script src="<?= base_url('assets/js/jquery.js'); ?>"></script> 
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="<?= base_url('assets/js/jqueryModal.js'); ?>"></script>
 
     <style>  

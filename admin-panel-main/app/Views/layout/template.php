@@ -2,7 +2,7 @@
         <div class="app-header header-shadow">
             <div class="app-header__logo">
                 <div class="logo">
-                    <p>SlashRTC</p>
+                    <p><strong>SlashRTC</strong></p>
                     <!-- <img class="img-fluid" src="https://imgs.search.brave.com/wi5HJslFHaXECdvzL46mrNP7_3PSPNOKYyXc4SDPxXQ/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly96ZW5w/cm9zcGVjdC1wcm9k/dWN0aW9uLnMzLmFt/YXpvbmF3cy5jb20v/dXBsb2Fkcy9waWN0/dXJlcy82MjE0YWVh/YTE4MjE4NTAwMDE1/NmIyODIvcGljdHVy/ZQ.jpeg" alt=""> -->
                 </div>
                 <div class="header__pane ml-auto">
@@ -44,20 +44,20 @@
                     <ul class="header-menu nav">
                         <li class="nav-item">
                             <a href="javascript:void(0);" class="nav-link">
-                                <i class="nav-link-icon fa-solid fa-chart-simple"> </i>
+                                <i class="ri-line-chart-fill" style="margin-right:5px"></i>
                                 <i class=""></i>
                                 Statistics
                             </a>
                         </li>
                         <li class="btn-group nav-item">
                             <a href="javascript:void(0);" class="nav-link">
-                                <i class="nav-link-icon fa fa-edit"></i>
+                            <i class="ri-window-line" style="margin-right:5px"></i>
                                 Projects
                             </a>
                         </li>
                         <li class="dropdown nav-item">
                             <a href="javascript:void(0);" class="nav-link">
-                                <i class="nav-link-icon fa fa-cog"></i>
+                             <i class="ri-settings-3-line" style="margin-right:5px"></i>
                                 Settings
                             </a>
                         </li>
@@ -70,18 +70,18 @@
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
                                             <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
-                                            <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                            <i class="ri-user-line"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                             <button type="button" tabindex="0" class="dropdown-item">User Account</button>
                                             <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Log Out</button>
+                                            <a href="<?= base_url("/logout")?>" type="button" tabindex="0" class="dropdown-item">Log Out</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        Random User
+                                        <?php echo session()->get('firstname')?>
                                     </div>
                                     <div class="widget-subheading">
                                         Admin
@@ -89,8 +89,7 @@
                                 </div>
                                 <div class="widget-content-right header-user-info ml-3">
                                     <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                                        <i class="fa text-white fa-calendar pr-1 pl-1">
-                                        </i>
+                                        <i class="ri-notification-line" style="padding:6px"></i>
                                     </button>
                                 </div>
                             </div>
@@ -142,12 +141,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="elements-dropdowns.html">
+                                    <a href="/">
                                         <i class="metismenu-icon"></i>Team Lead Dasboard
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="elements-dropdowns.html">
+                                    <a href="/">
                                         <i class="metismenu-icon"></i>Supervisor Dashboard
                                     </a>
                                 </li>

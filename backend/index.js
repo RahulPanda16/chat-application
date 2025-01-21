@@ -18,8 +18,8 @@ const io = new Server(server,{
 let db;
 connection().then(database =>{
   db = database;
-  server.listen(3000, () => {
-    console.log(`server running at http://localhost:3000`);
+  server.listen(process.env.PORT, () => {
+    console.log(`server running at http://localhost:${process.env.PORT}`);
   });
 });
 
@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
       // console.log(socket.userId);
       activeUsers.add(msg);
 
-      io.emit('chat_message', msg,[...activeUsers]);
+      io.emit('chat_message', msg);
 
       try{
         const newChat = {
@@ -53,7 +53,7 @@ io.on('connection', (socket) => {
           timestamp:new Date().toLocaleTimeString(),
           date:new Date().toDateString()
         }
-        const chatCollection = db.collection("chatDetails");
+        const chatCollection = db.collection("chatDetails");    
         await chatCollection.insertOne(newChat);
         console.log("Message saved to database");
       }catch(error){

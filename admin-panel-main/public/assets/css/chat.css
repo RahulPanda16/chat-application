@@ -48,6 +48,7 @@ body {
     
     li {
       padding-bottom: 20px;
+      list-style: none;
     }
   }
   
@@ -76,7 +77,6 @@ body {
   background: #F2F5F8;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  
   color: #434651;
   
   .chat-header {
@@ -146,6 +146,7 @@ body {
         border-bottom-color: #86BB71;
         border-width: 10px;
         margin-left: -10px;
+        
       }
     }
     

@@ -39,7 +39,7 @@ class Users extends BaseController
                                   ->first();
 
                     $this->setUserSession($user);
-                    return redirect()->to('/chat');
+                    return redirect()->to('/');
             } 
         } 
             echo view('layout/header'); 

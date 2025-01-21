@@ -8,9 +8,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <div class="card-header">Summary Reports
                 <div class="btn-actions-pane-right">
                     <div role="group" class="btn-group-sm btn-group">
-                    <button class="btn btn-focus active <?php if($current_page == 'loggerReport1.php') echo 'active'; ?>" onclick="window.location.href = '/summaryReports/1'">SQL Report</button>
-                        <button class="btn btn-focus <?php if($current_page == 'loggerReport2.php') echo 'active'; ?>" onclick="window.location.href = '/summaryReports/2'">MongoDB Report</button>
-                        <button class="btn btn-focus <?php if($current_page == 'loggerReport3.php') echo 'active'; ?>" onclick="window.location.href = '/summaryReports/3'">Elastic Report</button>
+                        <button class="btn btn-focus inline-flex items-center px-3 py-2 text-white bg-black-500 rounded-lg w-full dark:bg-blue-600 <?php if($current_page == 1) echo 'active'; ?>" onclick="window.location.href = '/summaryReports/1'">SQL Report</button>
+                        <button class="btn btn-focus <?php if($current_page == 2) echo 'active'; ?>" onclick="window.location.href = '/summaryReports/2'">MongoDB Report</button>
+                        <button class="btn btn-focus <?php if($current_page == 3) echo 'active'; ?>" onclick="window.location.href = '/summaryReports/3'">Elastic Report</button>
                     </div>
                 </div>
             </div>
@@ -20,11 +20,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
 <!--  -->
 <div class="table-responsive">
-
     <table class="align-middle mb-0 table table-borderless table-striped table-hover">
-        
         <thead style="background-color:#c7c7c7">
-        <?php if($reportNumber == 1) { ?>
+            <?php if($reportNumber == 1) { ?>
                 <tr>
                     <!-- <th class="text-center col-sm-2">Campaign Name</th> -->
                     <th class="text-center col-sm-2">Call Hours</th>
@@ -36,7 +34,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     <th class="text-center col-sm-2">Call Autofail</th>
                     <th class="text-center col-sm-4">TalkTime</th>
                 </tr>
-                </thead>
+        </thead>
         <tbody>
             <?php 
             if (isset($pagedata['accessUser'])) {
@@ -60,7 +58,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
             ?>
         </tbody>
             <?php } else {?>
-
             <tr>
                 <th class="text-center col-sm-1">Call Hours</th>
                 <th class="text-center col-sm-2">Total Talk Time</th>
@@ -90,12 +87,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <td class="text-center"><?php echo $user -> Call_Autodrop; ?></td>
                 <td class="text-center"><?php echo $user -> Call_Autofail; ?></td>
                 <?php } else { ?>
-                <td class="text-center"><?php echo $user -> Talktime; ?></td>
-                <td class="text-center"><?php echo $user -> Total_Calls ; ?></td>
-                <td class="text-center"><?php echo $user -> Call_Answered ; ?></td>
-                <td class="text-center"><?php echo $user -> Missed_Calls; ?></td>
-                <td class="text-center"><?php echo $user -> Call_Autodrop; ?></td>
-                <td class="text-center"><?php echo $user -> Call_Autofail; ?></td>
+                <td class="text-center"><?php echo $user -> Total_Disposed_Calls -> value ; ?></td>
+                <td class="text-center"><?php echo $user -> Total_Calls -> value ; ?></td>
+                <td class="text-center"><?php echo $user -> Call_Answered -> doc_count  ; ?></td>
+                <td class="text-center"><?php echo $user -> Missed_Calls -> doc_count; ?></td>
+                <td class="text-center"><?php echo $user -> Call_Autodrop -> doc_count; ?></td>
+                <td class="text-center"><?php echo $user -> Call_Autofail -> doc_count; ?></td>
                     <?php } ?>
             </tr>
             <?php
@@ -107,6 +104,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         </tbody>
         <?php } ?>
     </table>
+
     <div class="d-block text-center card-footer">
         <?php if($reportNumber == 1){?>
              <a style="background-color: #A8CD89" class="text-center btn btn-success" href="<?php echo base_url('/getsummaryreport/1')?>">Download Summarize Report <i class="ri-chat-new-line"></i></a>
@@ -118,4 +116,3 @@ $current_page = basename($_SERVER['PHP_SELF']);
     </div>
     <div class="pager"><?= $pagedata['pager'] ?></div>
 </div>
-

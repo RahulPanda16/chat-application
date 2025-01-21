@@ -16,7 +16,7 @@ class Report extends BaseController
         }else if ($reportNo == 2){
             $apiUrl = 'http://192.168.0.152:1000/mongo/getsummarizereport';
         }else{
-            $apiUrl = 'http://192.168.0.152:1000/elastic/callreportsummary/get';
+            $apiUrl = 'http://192.168.0.152:1000/elastic/fetchSummary1';
         }
         $curl = curl_init($apiUrl); 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
