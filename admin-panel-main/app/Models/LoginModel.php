@@ -49,6 +49,10 @@ class LoginModel extends Model
         return $data;
     }
 
+    public function getAllUsers() {
+        return $this->findAll();
+    }
+
     protected function beforeUpdate(array $data){
         $data = $this->passwordHash($data);
         return $data;

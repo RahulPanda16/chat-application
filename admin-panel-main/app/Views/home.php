@@ -147,7 +147,7 @@
                                                                 <div class="widget-content p-0">
                                                                     <div class="widget-content-wrapper">
                                                                         <div class="widget-content-left mr-3">
-                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/9.jpg" alt="">
+                                                                            <img width="42" class="rounded-circle" src="" alt="">
                                                                         </div>
                                                                         <div class="widget-content-left">
                                                                             <div class="widget-heading">Username 1</div>
@@ -169,7 +169,7 @@
                                                                 <div class="widget-content p-0">
                                                                     <div class="widget-content-wrapper">
                                                                         <div class="widget-content-left mr-3">
-                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/5.jpg" alt="">
+                                                                            <img width="42" class="rounded-circle" src="" alt="">
                                                                         </div>
                                                                         <div class="widget-content-left">
                                                                             <div class="widget-heading">UserName 2</div>
@@ -191,7 +191,7 @@
                                                                 <div class="widget-content p-0">
                                                                     <div class="widget-content-wrapper">
                                                                         <div class="widget-content-left mr-3">
-                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
+                                                                            <img width="42" class="rounded-circle" src="" alt="">
                                                                         </div>
                                                                         <div class="widget-content-left">
                                                                             <div class="widget-heading">Username 3</div>
@@ -213,7 +213,7 @@
                                                                 <div class="widget-content p-0">
                                                                     <div class="widget-content-wrapper">
                                                                         <div class="widget-content-left mr-3">
-                                                                            <img width="42" class="rounded-circle" src="assets/images/avatars/3.jpg" alt="">
+                                                                            <img width="42" class="rounded-circle" src="" alt="">
                                                                         </div>
                                                                         <div class="widget-content-left">
                                                                             <div class="widget-heading">Username 4</div>

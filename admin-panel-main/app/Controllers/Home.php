@@ -169,25 +169,6 @@ class Home extends BaseController
         echo "deleted";
     }
 
-    // public function filterUsers() {
-    //     $role = $this->request->getVar('role');
-    //     $db = \Config\Database::connect();
-    
-    //     $query = "SELECT * FROM users";
-    //     if ($role !== '') {
-    //         $query .= " WHERE role = " . $db->escape($role);
-    //     }
-    
-    //     $queryResult = $db->query($query);
-    //     $users = $queryResult->getResult();
-    
-    //     // Update your data array with the filtered results
-    //     $data['accessUser'] = $users;
-    
-    //     // Load the table view as partial
-    //     echo view('table', $data);
-    // }
-
     public function filterUsers() {
         $role = $this->request->getVar('role');
         $search = $this->request->getVar('search');
@@ -209,15 +190,6 @@ class Home extends BaseController
         // Load the table view as partial
         echo view('user_table', $data);
     }
-    
-    // public function campaign(){ 
-    //     $data['campaign'] = 'campaign'; 
-    //     $data['campaigns'] = $this->campaign->paginate(25); 
-    //     echo view('/layout/header'); 
-    //     // echo view('/layout/template'); 
-    //     echo view('campaign', $data); 
-    //     echo view('/layout/footer'); 
-    // }
 
     public function campaign() {
         $db = \Config\Database::connect();

@@ -15,7 +15,7 @@ $routes->post('/signup2', 'Users::register');
 $routes->get('/logout', 'Users::logout');
 
 $routes->get('/', 'Home::home');
-$routes->get('/chat', 'Home::chat');
+$routes->get('/chat', 'ChatController::chat');
 $routes->get('/users', 'Home::index');
 $routes->get('/access', 'Home::access');
 $routes->match(['get','post'],'/campaign', 'Home::campaign');
